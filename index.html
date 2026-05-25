@@ -37,7 +37,8 @@ body{background:var(--bg);color:var(--white);font-family:'Sora',sans-serif;overf
 .wrap{display:flex;align-items:center;gap:72px;max-width:1060px;position:relative;z-index:2;flex-wrap:wrap;justify-content:center;}
 .copy{max-width:440px;}
 
-.logo-full{width:248px;max-width:64vw;height:auto;margin-bottom:26px;mix-blend-mode:screen;filter:drop-shadow(0 8px 30px rgba(184,242,106,.12));}
+.wordmark{font-family:'Sora';font-weight:800;font-size:27px;letter-spacing:-.6px;margin-bottom:26px;}
+.wordmark span{color:var(--green);}
 
 .out-badge{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;
   letter-spacing:1.6px;text-transform:uppercase;color:var(--green);margin-bottom:24px;
@@ -165,7 +166,7 @@ h1 em{font-style:normal;background:linear-gradient(115deg,var(--green),#e4ffb8);
 .lb-n{background:linear-gradient(90deg,rgba(255,255,255,.03) 0%,transparent 60%);border-left:3px solid #333;}
 
 /* bottom nav */
-.bnav{display:flex;background:#0c0c0c;border-top:1px solid var(--border);padding:9px 0 18px;position:sticky;bottom:0;}
+.bnav{display:flex;background:#0c0c0c;border-top:1px solid var(--border);padding:9px 0 18px;position:sticky;bottom:0;z-index:60;box-shadow:0 -10px 24px rgba(0,0,0,.6);}
 .bn{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;}
 .bn svg{width:20px;height:20px;opacity:.4;}
 .bn.on svg{opacity:1;}
@@ -200,7 +201,7 @@ footer .cp{margin-top:16px;font-size:11px;color:#555;}
 
     <!-- copy -->
     <div class="copy">
-      <img class="logo-full" src="logo-trim.png" alt="Open Club — Play More. Connect More.">
+      <div class="wordmark">Open <span>Club</span></div>
       <div class="out-badge"><span class="dot"></span> Out Now · iOS &amp; Android</div>
       <h1>Your round.<br>Your <em>club</em>.</h1>
       <p class="sub">The social home for golf and racket sport. Find players near you, start a round in a few taps, and build your reputation with the <strong style="color:var(--white)">Show Up Score</strong>.</p>
@@ -315,7 +316,7 @@ footer .cp{margin-top:16px;font-size:11px;color:#555;}
 </section>
 
 <footer>
-  <div class="fb"><img src="oc-mark.png" alt=""><b>Open Club</b></div>
+  <div class="fb"><b>Open Club</b></div>
   <p>Open Club is a social platform for booking and joining golf rounds and racket sport matches. Create a round, invite players, and connect with your local sporting community.</p>
   <div class="links">
     <a href="privacy.html">Privacy Policy</a>
