@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Club — Play more. Connect more.</title>
+<meta name="description" content="Open Club is the social home for golf and racket sports. Find players near you, start a round in a few taps, and build your reputation with the Show Up Score. Available on iOS and Android.">
+<link rel="icon" type="image/png" href="oc-mark.png">
+<link rel="apple-touch-icon" href="oc-mark.png">
+<meta name="theme-color" content="#060807">
+<meta property="og:title" content="Open Club — Play more. Connect more.">
+<meta property="og:description" content="The social home for golf and racket sports. Find players, start a round, track your Show Up Score.">
+<meta property="og:image" content="https://zorian.github.io/open-club-prototype/og-card.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#b8f26a; --green2:#7abf3a;
+  --bg:#060807; --card:#181818; --border:rgba(255,255,255,0.07);
+  --white:#f0ede6; --mid:#555550;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'Sora',sans-serif;overflow-x:hidden;}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:80px 28px 60px;
+  background:radial-gradient(ellipse 80% 60% at 50% -5%,#11261a 0%,#060807 58%);}
+.glow{position:absolute;width:680px;height:680px;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,242,106,.16),transparent 68%);
+  top:42%;left:52%;transform:translate(-50%,-50%);filter:blur(50px);pointer-events:none;}
+.grain{position:absolute;inset:0;opacity:.04;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+.wrap{display:flex;align-items:center;gap:72px;max-width:1060px;position:relative;z-index:2;flex-wrap:wrap;justify-content:center;}
+.copy{max-width:440px;}
+
+.logo-full{width:248px;max-width:64vw;height:auto;margin-bottom:26px;mix-blend-mode:screen;filter:drop-shadow(0 8px 30px rgba(184,242,106,.12));}
+
+.out-badge{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;
+  letter-spacing:1.6px;text-transform:uppercase;color:var(--green);margin-bottom:24px;
+  border:1px solid rgba(184,242,106,.25);padding:7px 15px;border-radius:100px;background:rgba(184,242,106,.05);}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(184,242,106,.7);animation:pulse 2.2s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(184,242,106,.6);}70%{box-shadow:0 0 0 13px rgba(184,242,106,0);}100%{box-shadow:0 0 0 0 rgba(184,242,106,0);}}
+
+h1{font-size:60px;font-weight:800;line-height:.98;letter-spacing:-2px;margin-bottom:20px;}
+h1 em{font-style:normal;background:linear-gradient(115deg,var(--green),#e4ffb8);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.sub{font-size:17px;line-height:1.6;color:#9fb3a6;margin-bottom:18px;}
+.sports{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+.sport{font-size:11px;font-weight:600;padding:6px 13px;border-radius:100px;border:1px solid var(--border);color:#c9d6cd;}
+.sport.live{color:var(--green);border-color:rgba(184,242,106,.4);background:rgba(184,242,106,.06);}
+.sport small{opacity:.55;font-weight:500;margin-left:4px;}
+
+.stores{display:flex;gap:13px;flex-wrap:wrap;}
+.store{display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:13px;text-decoration:none;transition:.2s;cursor:pointer;}
+.store svg{width:22px;height:22px;}
+.store small{display:block;font-size:9px;opacity:.7;line-height:1.1;}
+.store strong{display:block;font-size:14px;line-height:1.15;font-weight:600;}
+.store-light{background:var(--white);color:#0a0a0a;}
+.store-dark{background:rgba(255,255,255,.04);color:#fff;border:1px solid rgba(255,255,255,.16);}
+.store:hover{transform:translateY(-2px);}
+
+/* ---------- PHONE ---------- */
+.phone{width:312px;height:638px;border-radius:48px;padding:11px;flex-shrink:0;position:relative;
+  background:linear-gradient(155deg,#2a2a2c,#000);
+  box-shadow:0 60px 120px -30px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.04), inset 0 0 0 2px rgba(255,255,255,.03);
+  animation:floaty 7s ease-in-out infinite;}
+@keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+.island{position:absolute;top:23px;left:50%;transform:translateX(-50%);width:108px;height:30px;background:#000;border-radius:100px;z-index:20;display:flex;align-items:center;justify-content:center;border:1px solid rgba(184,242,106,.3);}
+.island img{width:17px;height:17px;object-fit:contain;}
+.screen{width:100%;height:100%;border-radius:38px;overflow:hidden;position:relative;background:#0d0d0d;}
+.scroll{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;font-family:'Plus Jakarta Sans',sans-serif;}
+.scroll::-webkit-scrollbar{display:none;}
+
+/* status bar */
+.sbar{display:flex;justify-content:space-between;align-items:center;padding:15px 22px 0;font-size:12px;font-weight:600;}
+.sbar .ic{display:flex;gap:5px;align-items:center;font-size:11px;}
+
+/* header */
+.hd{padding:14px 18px 0;display:flex;align-items:flex-start;justify-content:space-between;}
+.hd .t{font-size:22px;font-weight:800;letter-spacing:-.02em;}
+.hd .w{font-size:12px;color:#7d7d77;margin-top:2px;}
+.hd .acts{display:flex;gap:8px;}
+.hd .acts div{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:13px;opacity:.7;}
+
+/* pills */
+.pills{display:flex;gap:8px;padding:14px 18px 4px;overflow-x:auto;}
+.pills::-webkit-scrollbar{display:none;}
+.pill{display:flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;white-space:nowrap;font-size:11px;font-weight:600;}
+.pill.golf{background:#141f0a;border:1px solid rgba(184,242,106,.4);color:var(--green);}
+.pill.soon{background:#1a1a1a;}
+.pill.padel{border:1px solid rgba(91,156,232,.2);color:#5b9ce8;}
+.pill.tennis{border:1px solid rgba(232,212,77,.2);color:#e8d44d;}
+.pill .s{font-size:7.5px;padding:2px 6px;border-radius:8px;margin-left:2px;font-weight:600;}
+.pill.padel .s{background:rgba(91,156,232,.12);color:#5b9ce8;}
+.pill.tennis .s{background:rgba(232,212,77,.12);color:#e8d44d;}
+
+/* section head */
+.sh{display:flex;align-items:center;justify-content:space-between;padding:18px 18px 10px;}
+.sh .l{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;}
+.sh .flag{width:24px;height:24px;border-radius:7px;background:#141f0a;display:flex;align-items:center;justify-content:center;font-size:12px;}
+.sh .va{font-size:10px;color:var(--green);}
+.sh .badge{background:#ffb450;color:#000;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;}
+.sh .chev{color:#666;font-size:13px;}
+
+/* round card */
+.rcard{margin:0 18px 4px;border:1px solid var(--border);border-radius:14px;overflow:hidden;position:relative;
+  background:url('flag-bg.jpg') center/cover no-repeat;}
+.rcard.live{border:1px solid rgba(184,242,106,.45);box-shadow:0 0 18px rgba(184,242,106,.13);}
+.rc-top{padding:12px 12px 10px;position:relative;z-index:1;text-shadow:0 2px 5px rgba(0,0,0,.95),0 0 10px rgba(0,0,0,.7);}
+.rc-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.rc-date{font-size:11px;font-weight:700;}
+.rc-tags{display:flex;gap:5px;align-items:center;}
+.tg{font-size:8px;padding:3px 8px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.18);color:#fff;}
+.tg.live{display:flex;align-items:center;gap:4px;background:rgba(184,242,106,.22);color:var(--green);border-color:rgba(184,242,106,.5);font-weight:700;text-shadow:none;}
+.tg.live span{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);}
+.rc-rate{display:flex;align-items:center;gap:8px;margin-bottom:11px;}
+.rc-rate .lbl{font-size:10px;color:var(--green);font-weight:700;}
+.rc-rate .amt{font-size:11px;color:var(--green);font-weight:800;}
+.rc-rate .h{font-size:9px;color:rgba(255,255,255,.85);font-weight:600;}
+.players{display:flex;align-items:center;gap:0;}
+.pl{display:flex;flex-direction:column;align-items:center;gap:3px;margin-right:9px;}
+.pl img,.pl .ph{width:34px;height:34px;border-radius:50%;object-fit:cover;}
+.pl img.me{border:1.5px solid var(--green);}
+.pl .nm{font-size:8px;color:#fff;}
+.pl .hi{background:var(--green);color:#000;font-size:8.5px;font-weight:800;padding:2px 7px;border-radius:10px;text-shadow:none;line-height:1.2;}
+.pl .open{width:34px;height:34px;border-radius:50%;border:1.5px dashed rgba(255,255,255,.8);display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;}
+.pl .og{font-size:8px;color:var(--green);}
+.divider{width:1px;height:42px;background:rgba(255,255,255,.5);margin:0 9px;}
+.rc-foot{border-top:1px solid var(--border);padding:9px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;
+  position:relative;z-index:1;background:rgba(5,5,5,.92);backdrop-filter:blur(10px);text-shadow:0 1px 3px rgba(0,0,0,.9);}
+.rc-foot .nm{font-size:10.5px;color:var(--white);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rc-foot .meta{font-size:8.5px;color:#fff;margin-top:1px;}
+.rc-foot .meta.gr{color:var(--green);}
+.rc-acts{display:flex;gap:6px;align-items:center;flex-shrink:0;}
+.chat{width:30px;height:28px;border-radius:7px;border:1px solid rgba(184,242,106,.4);background:rgba(184,242,106,.08);display:flex;align-items:center;justify-content:center;font-size:12px;}
+.btn-green{background:var(--green);color:#000;font-size:8px;font-weight:700;padding:6px 12px;border-radius:5px;border:none;letter-spacing:.1em;font-family:'Plus Jakarta Sans';}
+.btn-outline{background:transparent;color:var(--green);font-size:8px;font-weight:700;padding:7px 12px;border-radius:6px;border:1px solid var(--green);letter-spacing:.1em;font-family:'Plus Jakarta Sans';}
+
+/* start a round */
+.start{margin:12px 18px 4px;}
+.start button{width:100%;font-size:13px;padding:14px 0;border-radius:13px;font-weight:800;letter-spacing:.04em;border:none;
+  background:var(--green);color:#000;font-family:'Plus Jakarta Sans';box-shadow:0 0 26px rgba(184,242,106,.35);}
+
+/* view all my rounds */
+.viewall{margin:8px 18px 16px;padding:11px;text-align:center;border:1px solid rgba(184,242,106,.3);border-radius:10px;color:var(--green);font-size:12px;font-weight:700;}
+
+/* weekly leaderboard */
+.lb{margin:0 14px 12px;display:flex;flex-direction:column;gap:5px;}
+.lbrow{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:14px;}
+.lbrow .rank{display:flex;align-items:center;gap:3px;width:28px;flex-shrink:0;}
+.lbrow .rank b{font-size:16px;font-weight:800;}
+.lbrow .arr{font-size:11px;font-weight:700;}
+.arr.up{color:var(--green);} .arr.down{color:#e85b5b;}
+.lbrow img{width:40px;height:40px;border-radius:50%;object-fit:cover;}
+.lbrow .who{flex:1;min-width:0;}
+.lbrow .who .nm{font-size:13px;font-weight:600;color:var(--white);}
+.lbrow .who .hi{font-size:10px;color:#888;margin-top:1px;}
+.lbrow .pts{font-size:14px;font-weight:800;}
+.lb-1{background:linear-gradient(90deg,rgba(255,215,0,.18) 0%,rgba(184,242,106,.05) 60%,transparent 100%);border-left:3px solid #FFD700;}
+.lb-2{background:linear-gradient(90deg,rgba(192,192,192,.1) 0%,transparent 60%);border-left:3px solid #C0C0C0;}
+.lb-3{background:linear-gradient(90deg,rgba(205,127,50,.1) 0%,transparent 60%);border-left:3px solid #CD7F32;}
+.lb-n{background:linear-gradient(90deg,rgba(255,255,255,.03) 0%,transparent 60%);border-left:3px solid #333;}
+
+/* bottom nav */
+.bnav{display:flex;background:#0c0c0c;border-top:1px solid var(--border);padding:9px 0 18px;position:sticky;bottom:0;}
+.bn{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;}
+.bn svg{width:20px;height:20px;opacity:.4;}
+.bn.on svg{opacity:1;}
+.bn .lb{font-size:8px;letter-spacing:.1em;color:var(--mid);text-transform:uppercase;font-weight:600;}
+.bn.on .lb{color:var(--green);}
+.bn.on svg{filter:drop-shadow(0 0 4px rgba(184,242,106,.5));}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--border);padding:34px 28px;text-align:center;font-family:'Plus Jakarta Sans';position:relative;z-index:2;}
+footer .fb{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:14px;}
+footer .fb img{width:24px;height:24px;}
+footer .fb b{font-size:14px;}
+footer p{font-size:12.5px;color:#7d8a81;max-width:480px;margin:0 auto 16px;line-height:1.6;}
+footer .links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;font-size:12px;}
+footer .links a{color:#9fb3a6;text-decoration:none;transition:.2s;}
+footer .links a:hover{color:var(--green);}
+footer .cp{margin-top:16px;font-size:11px;color:#555;}
+
+@media(max-width:760px){
+  h1{font-size:44px;}
+  .wrap{gap:48px;}
+  .phone{width:288px;height:590px;}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="glow"></div>
+  <div class="grain"></div>
+  <div class="wrap">
+
+    <!-- copy -->
+    <div class="copy">
+      <img class="logo-full" src="logo-trim.png" alt="Open Club — Play More. Connect More.">
+      <div class="out-badge"><span class="dot"></span> Out Now · iOS &amp; Android</div>
+      <h1>Your round.<br>Your <em>club</em>.</h1>
+      <p class="sub">The social home for golf and racket sport. Find players near you, start a round in a few taps, and build your reputation with the <strong style="color:var(--white)">Show Up Score</strong>.</p>
+      <div class="sports">
+        <div class="sport live">⛳ Golf</div>
+        <div class="sport">🏓 Padel<small>Soon</small></div>
+        <div class="sport">🎾 Tennis<small>Soon</small></div>
+        <div class="sport">🏸 Pickleball<small>Soon</small></div>
+      </div>
+      <div class="stores">
+        <a class="store store-light"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.5c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.7-3.1.7s-1.6-.7-2.7-.7c-1.4 0-2.7.8-3.4 2-1.5 2.5-.4 6.3 1 8.3.7 1 1.5 2.1 2.6 2.1 1 0 1.4-.7 2.7-.7s1.6.7 2.7.7 1.8-1 2.5-2c.8-1.1 1.1-2.2 1.1-2.3-.1 0-2.1-.8-2.1-3.1zM15 6.2c.6-.7 1-1.7.9-2.7-.8 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6.9.1 1.8-.5 2.5-1.2z"/></svg><span><small>Download on the</small><strong>App Store</strong></span></a>
+        <a class="store store-dark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1L13 12.1v-.2L3.7 2.2l-.1.1z"/><path d="M16.1 15.2l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1 .6 1 1.6 0 2.2l-3.7 2.1-.1-.1z"/></svg><span><small>Get it on</small><strong>Google Play</strong></span></a>
+      </div>
+    </div>
+
+    <!-- phone with real Find Rounds screen -->
+    <div class="phone">
+      <div class="island"><img src="oc-mark.png" alt=""></div>
+      <div class="screen">
+        <div class="scroll">
+
+          <div class="sbar"><span>1:54</span><span class="ic">▌▌ 5G ▮</span></div>
+
+          <div class="hd">
+            <div><div class="t">Find Rounds</div><div class="w">Welcome, Jaydon</div></div>
+            <div class="acts"><div>🔍</div><div>⋮</div></div>
+          </div>
+
+          <div class="pills">
+            <div class="pill golf">⛳ Golf</div>
+            <div class="pill soon padel">🏓 Padel<span class="s">Soon</span></div>
+            <div class="pill soon tennis">🎾 Tennis<span class="s">Soon</span></div>
+          </div>
+
+          <!-- Upcoming -->
+          <div class="sh">
+            <div class="l"><div class="flag">⛳</div> Upcoming rounds</div>
+            <div class="va">View All ›</div>
+          </div>
+
+          <div class="rcard">
+            <div class="rc-top">
+              <div class="rc-row"><div class="rc-date">Sun 14 Jun · 13:50</div><div class="rc-tags"><div class="tg">2-Ball</div></div></div>
+              <div class="rc-rate"><span class="lbl">Member rate</span><span class="amt">£20</span></div>
+              <div class="players">
+                <div class="pl"><img class="me" src="https://randomuser.me/api/portraits/men/76.jpg"><div class="nm">Test</div><div class="hi">10–20</div></div>
+                <div class="divider"></div>
+                <div class="pl"><div class="open">+</div><div class="og">Open</div></div>
+              </div>
+            </div>
+            <div class="rc-foot">
+              <div><div class="nm">Aigas Golf Club</div><div class="meta">Hosted by Test</div></div>
+              <div class="rc-acts"><button class="btn-green">JOIN</button></div>
+            </div>
+          </div>
+
+          <!-- Start a Round -->
+          <div class="start"><button>+ Start a Round</button></div>
+
+          <!-- Active -->
+          <div class="sh">
+            <div class="l">Active Rounds <div class="badge">1</div></div>
+            <div class="chev">⌃</div>
+          </div>
+
+          <div class="rcard live">
+            <div class="rc-top">
+              <div class="rc-row"><div class="rc-date">Wed 20 May · 23:10</div>
+                <div class="rc-tags"><div class="tg live"><span></span>LIVE</div><div class="tg">2-Ball</div></div></div>
+              <div class="rc-rate"><span class="lbl">Member rate</span><span class="amt">£50</span><span class="h">⛳ 9H</span></div>
+              <div class="players">
+                <div class="pl"><img class="me" src="https://randomuser.me/api/portraits/men/85.jpg"><div class="nm">You</div><div class="hi">10</div></div>
+                <div class="pl"><img class="me" src="https://randomuser.me/api/portraits/men/45.jpg"><div class="nm">Lawrence</div><div class="hi">15</div></div>
+              </div>
+            </div>
+            <div class="rc-foot">
+              <div style="min-width:0"><div class="nm">Abbey Hotel Golf &amp; Health Club</div><div class="meta gr">Your round</div></div>
+              <div class="rc-acts"><div class="chat">💬</div><button class="btn-outline">MANAGE</button></div>
+            </div>
+          </div>
+
+          <div class="viewall">View All My Rounds ›</div>
+
+          <!-- Weekly Leaderboard -->
+          <div class="sh">
+            <div class="l">Weekly Leaderboard</div>
+            <div class="va">View All ›</div>
+          </div>
+          <div class="lb">
+            <div class="lbrow lb-1"><div class="rank"><b style="color:#FFD700">1</b><span class="arr up">↑</span></div><img src="https://randomuser.me/api/portraits/men/32.jpg" style="border:2.5px solid rgba(255,215,0,.5)"><div class="who"><div class="nm">Jason M.</div><div class="hi">HI 1.08</div></div><div class="pts" style="color:var(--green)">98pts</div></div>
+            <div class="lbrow lb-2"><div class="rank"><b style="color:#C0C0C0">2</b><span class="arr up">↑</span></div><img src="https://randomuser.me/api/portraits/women/44.jpg" style="border:2.5px solid rgba(192,192,192,.4)"><div class="who"><div class="nm">Sarah K.</div><div class="hi">HI 8.4</div></div><div class="pts" style="color:#999">91pts</div></div>
+            <div class="lbrow lb-3"><div class="rank"><b style="color:#CD7F32">3</b><span class="arr down">↓</span></div><img src="https://randomuser.me/api/portraits/men/22.jpg" style="border:2.5px solid rgba(205,127,50,.4)"><div class="who"><div class="nm">Alex H.</div><div class="hi">HI 5.2</div></div><div class="pts" style="color:#999">87pts</div></div>
+            <div class="lbrow lb-n"><div class="rank"><b style="color:#555">4</b><span class="arr up">↑</span></div><img src="https://randomuser.me/api/portraits/men/55.jpg" style="border:2px solid rgba(255,255,255,.1)"><div class="who"><div class="nm">Tom R.</div><div class="hi">HI 15.6</div></div><div class="pts" style="color:#999">82pts</div></div>
+            <div class="lbrow lb-n"><div class="rank"><b style="color:#555">5</b><span class="arr down">↓</span></div><img src="https://randomuser.me/api/portraits/women/68.jpg" style="border:2px solid rgba(255,255,255,.1)"><div class="who"><div class="nm">Emma W.</div><div class="hi">HI 12.3</div></div><div class="pts" style="color:#999">79pts</div></div>
+          </div>
+
+          <div style="height:14px"></div>
+
+          <!-- bottom nav -->
+          <div class="bnav">
+            <div class="bn on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green)"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg><div class="lb">Home</div></div>
+            <div class="bn"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg><div class="lb">Map</div></div>
+            <div class="bn"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.38 8.38 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5z"/></svg><div class="lb">Inbox</div></div>
+            <div class="bn"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 14 0v1"/></svg><div class="lb">Profile</div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="fb"><img src="oc-mark.png" alt=""><b>Open Club</b></div>
+  <p>Open Club is a social platform for booking and joining golf rounds and racket sport matches. Create a round, invite players, and connect with your local sporting community.</p>
+  <div class="links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="mailto:hello@openclub.app">Support</a>
+  </div>
+  <div class="cp">© 2026 Open Club. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
